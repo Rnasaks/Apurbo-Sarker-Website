@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  html{
+    /* Smooth Scrolling */
+    scroll-behavior: smooth;
+    
+    /* Varialbles For Storing Colors */
+    --primary-clr: #ef2d50;
+    --white-clr: #ffffff;
+    --white-grey-clr: #f3f3f3;
+    --black-clr: #202020;
+    --black-grey-clr: #515151;
+  }
+  /*   === Reusable Code Starts ===   */
+  section .section-heading{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 50px;
+  }
+  .section-heading h1{
+    position: relative;
+    font-size: 38px;
+    color: var(--black-clr);
+    margin-bottom: 30px;
+  }
+  .section-heading h1::before{
+    position: absolute;
+    content: '';
+    width: 120px;
+    height: 2px;
+    background-color: var(--black-grey-clr);
+    top: calc(100% + 20px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .section-heading h1::after{
+    position: absolute;
+    content: '';
+    width: 14px;
+    height: 14px;
+    background-color: var(--primary-clr);
+    top: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+  }
+  button.btn{
+    display: inline-block;
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--white-clr);
+    background-color: var(--primary-clr);
+    border: 1px solid transparent;
+    border-radius: 25px;
+    user-select: none;
+    cursor: pointer;
+    transition: all 0.20s ease-in;
+  }
+  button.btn:hover{
+    background-color: transparent;
+    border: 1px solid var(--primary-clr);
+    color: var(--primary-clr);
+  }
+  /*   === Reusable Code Ends ===   */
+  body{
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--white-clr);
+  }
+  .website-container{
+    width: 100%;
+    min-height: 100vh;
+  }
+
+    /* === Home Section Styling Starts === */
+.home {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('images/3.png') no-repeat center/cover;
+  }
+  
+  .home .home-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(43, 39, 39, 0.8);
+    z-index: 1;
+  }
+  
+  .home .navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8%;
+    z-index: 100;
+  }
+  
+  /* Styling for the dropdown menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.9); /* Background color of the dropdown menu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for dropdown menu */
+    padding: 10px;
+}
+
+/* Styling for the dropdown toggle */
+.dropdown-toggle {
+    cursor: pointer;
+    color: #fff; 
+}
+
+/* Styling for the dropdown items */
+.dropdown-menu li {
+    list-style-type: none;
+}
+
+/* Styling for the links inside the dropdown */
+.dropdown-menu li a {
+    text-decoration: none;
+    color: #fff; /* Link color */
+    display: block;
+    padding: 5px 0;
+}
+
+/* Media query for screens with a maximum width of 768px (mobile view) */
+@media (max-width: 768px) {
+    /* Adjust styles for smaller devices */
+    .dropdown-menu {
+        position: absolute; /* Position dropdown absolutely to ensure it appears over other content */
+        top: 100%; /* Position dropdown below the parent */
+        left: 0; /* Align dropdown with the left edge of the parent */
+        background-color: var(--white-grey-clr); /* Background color of the dropdown menu */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for dropdown menu */
+        width: 100%; /* Make dropdown full width */
+    }
+
+    .dropdown-menu li a {
+        padding: 10px 20px; /* Increase padding for better touch interaction */
+    }
+
+    /* Change the color of the dropdown toggle for mobile view */
+    .dropdown-toggle {
+        color: #000;
+    }
+}
+
+  /* Adjust the styles based on your home banner color */
+  .home.active .navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.2);
+    animation: animateNavbar 0.5s linear;
+  }
+  @keyframes animateNavbar{
+    0%{
+      transform: translateY(-100%);
+    }
+    100%{
+      transform: translateY(0px);
+    }
+  }
+  .logo {
+    text-decoration: none; /* Remove underline */
+}
+
+.home .navbar .logo {
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-size: 28px;
+    text-decoration: none; /* Remove underline from the anchor */
+}
+
+.navbar .logo img {
+    width: 60px; /* Set the desired width for your logo */
+    height: auto; /* Maintain the aspect ratio */
+    margin-right: 10px; /* Adjust margin as needed */
+}
+
+.navbar .logo span {
+    color: red; /* Set the color for the span */
+    font-weight: bold; /* Make the text bold */
+}
+
+.navbar .logo:hover span {
+    color: blue; /* Change text color on hover */
+}
+
+  
+  .home .navbar .navbar-links{
+    position: relative;
+    list-style: none;
+    z-index: 100;
+  }
+  .navbar .navbar-links li{
+    display: inline-block;
+    margin: 0px 10px;
+  }
+  .navbar .navbar-links li a{
+    text-decoration: none;
+    color: var(--white-clr);
+    font-size: 15px;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+  }
+  .navbar .navbar-links li a:hover{
+    color: var(--primary-clr);
+  }
+  .home .navbar .menu-btn{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 26px;
+    height: 20px;
+    cursor: pointer;
+    display: none;
+    /*border: 1px solid white;*/
+  }
+  .home .navbar .menu-btn span{
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--white-clr);
+    border-radius: 15px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .home .navbar .menu-btn span:nth-of-type(1){
+    transform: translateY(-7px);
+  }
+  .home .navbar .menu-btn span:nth-of-type(3){
+    transform: translateY(7px);
+  }
+  
+  .home .home-banner{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 0px 8%;
+    text-align: center;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--white-clr);
+  }
+ 
+  @import url('https://fonts.googleapis.com/css?family=Lato');
+
+  .top {
+    position: absolute;
+    top: 100px; /* Adjust the top position as needed */
+    color: #d9ff00; /* Set the color of the text as red (you can replace #ff0000 with any color code) */
+    font-size: 24px; /* Set the font size of the text */
+  }
+  
+
+  #demo {
+    text-transform: uppercase;
+    font-family: Lato;
+    font-size: 100px;
+    color: black;
+    margin: 0;
+    border-bottom: 1px solid white;
+    cursor: pointer; /* Add cursor pointer to indicate interactivity */
+  }
+  
+  #demo span {
+    display: inline-block
+  }
+  
+  .animated {
+    animation: customRainbow 4s infinite;
+    transition-timing-function: linear;
+  }
+  
+  @keyframes customRainbow {
+    0% { text-shadow: 0px 0px 5px #FF6347; } /* Tomato */
+    14% { text-shadow: 0px 0px 5px #FFD700; } /* Gold */
+    28% { text-shadow: 0px 0px 5px #7FFF00; } /* Chartreuse */
+    43% { text-shadow: 0px 0px 5px #00BFFF;  -webkit-transform: translatey(-25px); }/* DeepSkyBlue */
+    57% { text-shadow: 0px 0px 5px #8A2BE2; } /* BlueViolet */
+    71% { text-shadow: 0px 0px 5px #9400D3; } /* DarkViolet */
+    85% { text-shadow: 0px 0px 5px #FF1493; } /* DeepPink */
+    100% { text-shadow: 0px 0px 5px #FF6347; } /* Tomato */
+  }
+  
+  
+.line3 {
+    font-size: calc(42px + 1.5vw);
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.non-flicker {
+    color: #ffffff; /* Same color as background to hide the text */
+}
+
+.flicker {
+    color: #ff6600; /* Unique color for the flickering text */
+    animation: colorChange 8s infinite alternate;
+}
+
+@keyframes colorChange {
+    0% {
+        color: #00ff00; /* Green */
+    }
+    33% {
+        color: #0000ff; /* Blue */
+    }
+    66% {
+        color: #fd0d00; /* Sky Blue */
+    }
+    100% {
+        color: #ff00ff; /* Magenta */
+    }
+}
+
+
+
+  .home .home-banner h3{
+    font-size: calc(14px + 0.4vw);
+    margin-bottom: 15px;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+  .home .home-banner .social-media-links{
+    position: relative;
+    top: 15px;
+  }
+  .home .home-banner .social-media-links a{
+    display: inline-block;
+    margin: 0px 7px;
+    color: var(--white-clr);
+    text-decoration: none;
+  }
+  .home .home-banner .social-media-links a i{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-clr);
+    color: var(--white-clr);
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  .home .home-banner .social-media-links a i:hover{
+    background-color: var(--white-clr);
+    color: var(--primary-clr);
+  }
+  /*   === Home Section Styling Ends ===   */
+
+ /* Blog Section Styling */
+.blog {
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.blog-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: center; /* Center content horizontally */
+}
+
+.blog-content article {
+  background: white;
+  margin: 15px;
+  padding: 20px;
+  max-width: 700px; /* Adjusted max-width for better readability */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+.blog-content article:hover {
+  transform: translateY(-5px); /* Hover effect to lift the article */
+}
+
+.blog-content img {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto; /* Centering the image */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow to images */
+}
+
+.blog-content h2 {
+  margin-top: 15px; /* Slightly increased margin */
+  font-size: 1.8em; /* Larger font size for better hierarchy */
+  text-align: center;
+  color: #333; /* Darker color for better readability */
+}
+
+.blog-content p {
+  margin-top: 10px;
+  font-size: 1.2em; /* Increased font size */
+  color: #666; /* Darker text color for contrast */
+  line-height: 1.6; /* Improved line spacing for readability */
+}
+
+
+/* Centered Pagination Styling */
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 40px; /* Space between pagination and footer */
+}
+
+.pagination {
+    display: flex;
+    list-style-type: none; /* Remove default list styling */
+    padding: 0;
+    margin: 0;
+}
+
+.pagination li {
+    margin: 0 4px;
+}
+
+.pagination li a {
+    color: black;
+    padding: 8px 12px; /* Adjusted padding */
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.pagination li a.active {
+    background-color: #4caf50;
+    color: white;
+    border: 1px solid #4caf50;
+}
+
+.pagination li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+/* === Page Footer Styling Starts === */
+#footer {
+  background: #eeeeee;
+  padding: 20px;
+  color: #555555;
+  font-size: 14px;
+  border: 2px solid red;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+#footer:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+#footer .footer-top {
+  background: #f6f6f6;
+  padding: 30px 0;
+  border-radius: 10px;
+}
+
+#footer .footer-info h3 {
+  font-size: 24px;
+  margin: 0 0 20px 0;
+  padding: 2px 0 2px 0;
+  line-height: 1;
+  font-weight: 700;
+  border-bottom: 2px solid red;
+}
+
+#footer .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background-color: var(--primary-clr);
+  color: var(--white-clr);
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 4px;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  border: 2px solid red;
+}
+
+#footer .social-links a:hover {
+  background-color: blanchedalmond;
+  color: var(--primary-clr);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+#footer h4 {
+  font-size: 16px;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 12px;
+  border-bottom: 2px solid red;
+}
+
+#footer .footer-links ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+#footer .footer-links ul a {
+  color: #555555;
+  transition: color 0.3s;
+  display: inline-block;
+  line-height: 1;
+}
+
+#footer .footer-links ul a:hover {
+  color: var(--primary-clr);
+}
+
+#footer .footer-newsletter form {
+  margin-top: 20px;
+  background: #fff;
+  padding: 10px;
+  position: relative;
+  border: 1px solid #d5d5d5;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+#footer .footer-newsletter form input[type="email"] {
+  border: 0;
+  padding: 10px;
+  width: calc(100% - 20px);
+}
+
+#footer .footer-newsletter form input[type="submit"] {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  padding: 0 20px;
+  background: rgb(249, 51, 51);
+  color: #fff;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  border-radius: 0 4px 4px 0;
+  border: 2px solid red;
+}
+
+#footer .footer-newsletter form input[type="submit"]:hover {
+  background: blue;
+  box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+}
+
+.copyright {
+  text-align: center;
+  color: #1d002c; /* Set your default text color */
+}
+
+.copyright span {
+  color: red; /* Set the text color to red */
+}
+
+#footer .copyright {
+  text-align: center;
+  padding-top: 20px;
+}
+
+#footer .credits {
+  padding-top: 10px;
+  text-align: center;
+  font-size: 13px;
+}
+
+
+/* === Page Footer Styling Ends === */
+@media (max-width: 768px) {
+  /* Home Section */
+  .home .navbar .menu-btn {
+      display: flex;
+      z-index: 101;
+  }
+  .home .navbar .menu-btn.active span:nth-of-type(1) {
+      transform: translateY(0px) rotate(45deg);
+      background-color: var(--primary-clr);
+  }
+  .home .navbar .menu-btn.active span:nth-of-type(3) {
+      transform: translateY(0px) rotate(-45deg);
+      background-color: var(--primary-clr);
+  }
+  .home .navbar .menu-btn.active span:nth-of-type(2) {
+      opacity: 0;
+  }
+  .home .navbar .navbar-links {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      top: 0;
+      right: -100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: var(--white-clr);
+      transition: right 0.3s;
+      z-index: 100;
+  }
+  .home .navbar .navbar-links.active {
+      right: 0;
+  }
+  .navbar .navbar-links li {
+      margin: 25px 0px 0px;
+  }
+  .navbar .navbar-links li:nth-child(1) {
+      margin-top: 180px;
+  }
+  .navbar .navbar-links li a {
+      font-size: 18px;
+      letter-spacing: 2px;
+      color: var(--black-clr);
+  }
+}
+
+/* Dropdown Media query for screens with a maximum width of 768px (mobile view) */
+@media (max-width: 768px) {
+  /* Adjust styles for smaller devices */
+  .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--white-grey-clr);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 100%;
+  }
+  .dropdown-menu li a {
+      padding: 10px 20px;
+  }
+  /* Change the color of the dropdown toggle for mobile view */
+  .dropdown-toggle {
+      color: #000;
+  }
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 600px) {
+  #demo {
+      font-size: 36px;
+  }
+}
+
+ </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apurbo Sarker - English Blog</title>
+  <meta name="description" content="Welcome to the digital marketing world of Apurbo Sarker. Explore expert insights, tips, and strategies to elevate your online presence and grow your business.">
+  <meta name="theme-color" content="#4285F4"> <!-- Adjust the color value as needed -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  	<!-- Meta Pixel Code -->
+ <script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2860752674109519');
+fbq('track', 'PageView');
+</script>
+</head>
+<body> 
+<!--   *** Website Container Starts ***   -->
+<div class="website-container">
+<!--   *** Home Section Starts ***   -->
+<section class="home" id="home">
+	<div class="home-overlay"></div>
+	<nav class="navbar">
+		<div class="logo">
+			<a href="index.html">
+				<img src="images/logo.png" alt="RNASAKS Logo">
+			</a>			
+		  <a href="index.html" class="logo"><span style="color: red;">RNA</span>SAKS</a>
+		</div>
+		<ul class="navbar-links">
+		  <li><a href="/index.html">Home</a></li>
+		  <li><a href="/#about">About</a></li>
+		  <li><a href="/#services" target="_blank">Services</a></li>
+		  <li class="dropdown">
+			<a href="/#blog" class="blog-link">
+				Blog
+			</a>
+			<span class="dropdown-toggle">
+			</span>
+			<ul class="dropdown-menu" style="display: none;">
+				<li><a href="/blogs/bangla.html">Bangla</a></li>
+				<li><a href="/blogs/english.html">English</a></li>
+			</ul>
+		</li>
+		  <li><a href="/#contact">Contact</a></li>
+		</ul>
+		<div class="menu-btn">
+		  <span></span>
+		  <span></span>
+		  <span></span>
+		</div>
+	  </nav>
+
+	  <div class="home-banner">
+		<div class="top">
+		  <h2>Hello, I am</h2>
+		<div id="outer-div">
+		  <p id="demo">APURBO SARKER</p>
+		<h1 class="line3">
+			<span class="flicker"> Welcome To English Blog</span>
+		</h1>
+		<h2>Learn here everything</h2>
+		<div class="social-media-links">
+			<a href="https://www.facebook.com/rnasaks" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+			<a href="https://twitter.com/SkapurboSk" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+			<a href="https://www.instagram.com/rnasaks" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+			<a href="https://www.linkedin.com/in/apurbo-kumer-sarker-18bb26211" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+			<a href="https://www.youtube.com/channel/UCxYsyktK7q37M4vR9WZiy8Q" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+		</div>
+	</div>
+</div>
+</div>
+</section>
+
+ <!-- Blog Section -->
+ <section class="blog" id="blog">
+    <div class="section-heading">
+      <h1>English Blog</h1>
+    </div>
+    <div class="blog-content">
+      <article>
+        <img src="images/blog/image1.jpg" alt="Blog Image 1">
+        <h2>Introduction to Digital Marketing</h2>
+        <p>Digital marketing is the use of digital channels, platforms, and technologies to promote products or services to a targeted audience. It involves various online tactics such as search engine optimization (SEO), social media marketing, email marketing, and more.</p>
+      </article>
+      <article>
+        <img src="images/blog/image2.jpg" alt="Blog Image 2">
+        <h2>The Importance of SEO in Digital Marketing</h2>
+        <p>Search Engine Optimization (SEO) plays a crucial role in digital marketing by helping websites rank higher in search engine results. This increases visibility, drives organic traffic, and improves the overall online presence of a business.</p>
+      </article>
+      <article>
+        <img src="images/blog/image3.jpg" alt="Blog Image 3">
+        <h2>The Power of Social Media Engagement</h2>
+        <p>Social media engagement is a key component of any successful digital marketing strategy. Platforms like Facebook, Instagram, Twitter, and LinkedIn provide unique opportunities for businesses to connect with their audience on a personal level. Effective social media engagement involves creating compelling content, fostering meaningful interactions, and building a community around your brand. By leveraging the power of social media, businesses can enhance brand awareness, drive customer loyalty, and even generate leads.</p>
+      </article>
+      <article>
+        <img src="images/blog/image4.jpg" alt="Blog Image 4">
+        <h2>Email Marketing Best Practices for Success</h2>
+        <p>Email marketing remains a powerful tool in the digital marketing arsenal. Implementing best practices can significantly enhance the effectiveness of your email campaigns. Start by building a targeted and segmented email list to deliver personalized content to your audience. Craft compelling subject lines and content that encourage engagement. Utilize automation to streamline your campaigns and send relevant messages at the right time. Analyze metrics like open rates and click-through rates to continuously optimize your email strategy for better results.</p>
+      </article>
+      <article>
+        <img src="images/blog/image5.jpg" alt="Blog Image 5">
+        <h2>The Evolution of E-commerce: Trends Shaping the Future</h2>
+        <p>E-commerce continues to evolve rapidly, shaped by technological advancements and changing consumer behaviors. Stay ahead of the curve by exploring the latest trends in online retail. From the rise of mobile commerce and voice search to the integration of augmented reality in the shopping experience, understanding these trends can help businesses adapt and thrive in the dynamic e-commerce landscape. Embrace innovative strategies such as personalized shopping experiences, AI-powered product recommendations, and seamless checkout processes to enhance user satisfaction and drive conversions in the ever-evolving world of online retail.</p>
+      </article>
+      <article>
+        <img src="images/blog/image6.jpg" alt="Blog Image 6">
+        <h2>Harnessing the Potential of Video Marketing</h2>
+        <p>Video marketing has emerged as a dynamic and engaging tool for brands to connect with their audience. Explore the various ways in which video content can be utilized across platforms like YouTube, Instagram, and TikTok to tell compelling stories, showcase products, and build a stronger brand presence. Dive into video SEO strategies to optimize your content for search engines and increase discoverability. With the growing popularity of live streaming and short-form videos, understanding the nuances of each format can help businesses leverage the full potential of video marketing in their digital strategies.</p>
+      </article>
+      <article>
+        <img src="images/blog/image7.jpg" alt="Blog Image 7">
+        <h2>The Role of Influencer Marketing in the Digital Age</h2>
+        <p>Influencer marketing has become a cornerstone of digital advertising, with social media influencers playing a significant role in shaping consumer opinions. Explore the strategies behind successful influencer partnerships, from identifying the right influencers for your brand to creating authentic and engaging collaborations. Understand the impact of micro and macro influencers and how they can cater to different target audiences. Dive into metrics such as engagement rates and audience demographics to measure the effectiveness of influencer campaigns and ensure a meaningful return on investment in the dynamic landscape of digital influence.</p>
+      </article>
+      <article>
+        <img src="images/blog/image9.jpg" alt="Blog Image 9">
+        <h2>Data Privacy in the Digital Era: Navigating Challenges and Building Trust</h2>
+        <p>With increasing concerns about data privacy, businesses need to prioritize safeguarding customer information. Explore the evolving landscape of data protection laws and regulations, such as GDPR and CCPA, and understand the implications for digital marketing practices. Dive into strategies for transparent data collection and storage, and discover how building a strong commitment to data privacy can enhance customer trust. Learn about the importance of clear privacy policies, secure data handling practices, and the role of ethical data usage in maintaining a positive brand reputation in the digital age.</p>
+      </article>
+      <article>
+        <img src="images/blog/image10.jpg" alt="Blog Image 10">
+        <h2>The Future of Artificial Intelligence in Marketing</h2>
+        <p>Explore the transformative impact of Artificial Intelligence (AI) on marketing strategies. From personalized customer experiences and predictive analytics to chatbots and machine learning algorithms, AI is reshaping how businesses engage with their audience. Delve into case studies showcasing successful AI implementations in marketing campaigns and understand the potential for automation in tasks like content creation, targeting, and data analysis. As AI continues to evolve, staying informed about the latest advancements can empower businesses to stay competitive and deliver innovative, data-driven marketing solutions.</p>
+      </article>
+      <article>
+        <img src="images/blog/image11.jpg" alt="Blog Image 11">
+        <h2>The Impact of Voice Search on SEO</h2>
+        <p>Voice search is becoming increasingly popular with the rise of smart devices like smartphones and virtual assistants. Understand how voice search differs from traditional text-based search and how it affects SEO strategies. Explore techniques for optimizing content for voice search, such as using natural language, answering common questions concisely, and optimizing for local queries. As voice search continues to grow, businesses must adapt their SEO efforts to remain visible to their audience.</p>
+      </article>
+      <article>
+        <img src="images/blog/image12.jpg" alt="Blog Image 12">
+        <h2>Creating Compelling Content for Online Audiences</h2>
+        <p>Content is king in the digital world, and creating high-quality, engaging content is essential for attracting and retaining online audiences. Learn effective strategies for content creation, including storytelling, visual elements, and interactive features. Understand your audience's interests and pain points to tailor content that resonates with them. Incorporate SEO best practices to ensure your content is discoverable and ranks well in search engine results. By consistently delivering valuable content, you can build trust with your audience and drive engagement with your brand.</p>
+      </article>
+      <article>
+        <img src="images/blog/image13.jpg" alt="Blog Image 13">
+        <h2>Mastering Mobile Marketing Strategies</h2>
+        <p>Mobile devices have become ubiquitous, making mobile marketing essential for businesses of all sizes. Explore effective mobile marketing strategies, including responsive design, mobile-friendly content, and location-based targeting. Learn how to optimize your website and advertising campaigns for mobile users to provide a seamless and engaging experience. Utilize mobile apps, SMS marketing, and mobile-friendly social media platforms to reach and engage with your audience wherever they are. By prioritizing mobile marketing, businesses can maximize their reach and impact in today's mobile-first world.</p>
+      </article>
+      <article>
+        <img src="images/blog/image14.jpg" alt="Blog Image 14">
+        <h2>Adapting to Changing Consumer Behavior</h2>
+        <p>Consumer behavior is constantly evolving, influenced by factors such as technology, social trends, and economic conditions. Stay ahead of the curve by understanding the latest shifts in consumer behavior and adapting your marketing strategies accordingly. Embrace omnichannel marketing to provide a seamless experience across multiple touchpoints and cater to the preferences of modern consumers. Leverage data analytics to gain insights into consumer behavior and personalize your marketing efforts for maximum impact. By staying agile and responsive to changing consumer needs, businesses can maintain a competitive edge in today's dynamic marketplace.</p>
+      </article>
+      <article>
+        <img src="images/blog/image15.jpg" alt="Blog Image 15">
+        <h2>Maximizing ROI with Content Marketing</h2>
+        <p>Content marketing is a strategic approach focused on creating and distributing valuable, relevant, and consistent content to attract and retain a clearly defined audience. Explore techniques for maximizing return on investment (ROI) with content marketing, including creating high-quality evergreen content, repurposing content across different platforms, and leveraging user-generated content. Learn how to measure the effectiveness of your content marketing efforts using key performance indicators (KPIs) such as traffic, engagement, and conversions. By investing in content marketing strategies that resonate with your audience, businesses can drive long-term growth and success.</p>
+      </article>
+      <article>
+        <img src="images/blog/image16.jpg" alt="Blog Image 16">
+        <h2>The Rise of Chatbots in Customer Service</h2>
+        <p>Chatbots are automated messaging systems powered by artificial intelligence (AI) that interact with users in natural language. Explore the role of chatbots in transforming customer service and enhancing the customer experience. Learn how businesses can use chatbots to provide instant responses to customer inquiries, streamline processes, and increase efficiency. Discover best practices for designing and implementing chatbots, including personalization, integration with existing systems, and continuous improvement through data analysis. By embracing chatbot technology, businesses can deliver seamless and personalized customer service experiences while driving operational efficiencies.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Pagination -->
+  <div class="container mt-3">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </div>
+
+
+ <!-- ======= Footer ======= -->
+ <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3>RNASAKS</h3>
+              <p>
+                Gaibandha<br>
+                Rangpur, BANGLADESH<br><br>
+                <strong>Phone:</strong> +88 01324 220899<br>
+                <strong>Email:</strong> skapurbosarker6@gmail.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="https://www.facebook.com/rnasaks" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+			<a href="https://twitter.com/SkapurboSk" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+			<a href="https://www.instagram.com/rnasaks" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+			<a href="https://www.linkedin.com/in/apurbo-kumer-sarker-18bb26211" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+			<a href="https://www.youtube.com/channel/UCxYsyktK7q37M4vR9WZiy8Q" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="/index.html">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/#about">About</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/#services">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#doctor">Blog</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="/project/services/social_media_marketing.html">Social Media Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/project/services/lead_generation.html">Lead Generation</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/project/services/email_marketing.html">Email Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Digital Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/project/services/seo.html">SEO</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>However, if there are many people who do not know what I read, then I will read our great fault</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="copyright">
+      <p>&copy; Copyright <strong><span>RNASAKS</span></strong>. All Rights Reserved</p>
+      <p class="credits">Design by <span>RNASAKS</span></p>
+  </div>
+</div>
+  </footer>
+
+  <script>
+
+    document.querySelector('.dropdown-toggle').addEventListener('click', function() {
+      var dropdownMenu = document.querySelector('.dropdown-menu');
+      if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
+          dropdownMenu.style.display = 'block';
+      } else {
+          dropdownMenu.style.display = 'none';
+      }
+  });
+
+  // Hide the dropdown menu if clicking outside of it
+  document.addEventListener('click', function(event) {
+      var isClickInside = document.querySelector('.dropdown').contains(event.target);
+      if (!isClickInside) {
+          document.querySelector('.dropdown-menu').style.display = 'none';
+      }
+  });
+// Damo
+const textElement = document.getElementById('demo');
+	const textInput = document.querySelector('input');
+	
+	function animate() {
+	  var text = textElement.innerHTML;
+	  text = text.replace(" ", "_");
+	  var len = text.length;
+	  var wrapped = "";
+	  for (var i in text) {
+		wrapped += '<span>' + text.charAt(i) + '</span>';
+	  }
+	  textElement.innerHTML = wrapped;
+	  var delay = 0;
+	  for (var i = 0; i < len; i++) {
+		var childQuery = "#demo span:nth-child(" + (i + 1) + ")";
+		document.querySelector(childQuery).style.animationDelay = delay + "s";
+		delay += 0.25;
+	  }
+	
+	  document.querySelectorAll('#demo span').forEach(span => span.classList.add('animated'));
+	}
+	
+	// Call the animate function when the page loads
+	animate();
+
+  // Toggle Menu Functionality
+  const menuBtn = document.querySelector('.menu-btn');
+  const navbarLinksWrapper = document.querySelector('.navbar-links');
+
+  menuBtn.addEventListener('click', function () {
+      menuBtn.classList.toggle('active');
+      navbarLinksWrapper.classList.toggle('active');
+  });
+
+  // Close Menu When Link is Clicked
+  const navbarLinks = document.querySelectorAll('.navbar-links li a');
+  navbarLinks.forEach(link => {
+      link.addEventListener('click', function () {
+          menuBtn.classList.remove('active');
+          navbarLinksWrapper.classList.remove('active');
+      });
+  });
+
+  // Show/Hide Menu When Scrolling
+  const homeSection = document.querySelector('#home');
+  window.addEventListener('scroll', function () {
+      if (window.scrollY > 140) {
+          homeSection.classList.add('active');
+      } else {
+          homeSection.classList.remove('active');
+      }
+  });
+	
+    document.addEventListener('DOMContentLoaded', function() {
+        const articlesPerPage = 1;
+        const articles = document.querySelectorAll('.blog-content article');
+        const pageLinks = document.querySelectorAll('.pagination .page-link');
+        let currentPage = 1;
+  
+        function displayArticles(page) {
+          const start = (page - 1) * articlesPerPage;
+          const end = start + articlesPerPage;
+          articles.forEach((article, index) => {
+            if (index >= start && index < end) {
+              article.style.display = 'block';
+            } else {
+              article.style.display = 'none';
+            }
+          });
+        }
+  
+        function setActivePage(page) {
+          pageLinks.forEach(link => {
+            if (link.textContent === page.toString()) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+  
+        function handlePageClick(event) {
+          const targetPage = parseInt(event.target.textContent);
+          if (!isNaN(targetPage)) {
+            currentPage = targetPage;
+            displayArticles(currentPage);
+            setActivePage(currentPage);
+          } else if (event.target.textContent === 'Previous') {
+            if (currentPage > 1) {
+              currentPage--;
+              displayArticles(currentPage);
+              setActivePage(currentPage);
+            }
+          } else if (event.target.textContent === 'Next') {
+            const totalPages = Math.ceil(articles.length / articlesPerPage);
+            if (currentPage < totalPages) {
+              currentPage++;
+              displayArticles(currentPage);
+              setActivePage(currentPage);
+            }
+          }
+        }
+  
+        pageLinks.forEach(link => {
+          link.addEventListener('click', handlePageClick);
+        });
+  
+        displayArticles(currentPage);
+        setActivePage(currentPage);
+      });
+ </script>
+</body>
+</html>
