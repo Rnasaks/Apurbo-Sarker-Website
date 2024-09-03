@@ -5,129 +5,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modern Proposal</title>
     <style>
-body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    font-family: 'Roboto', sans-serif;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    overflow-y: auto; /* Allow vertical scrolling */
-    background: linear-gradient(135deg, rgba(15, 12, 41, 0.8), rgba(48, 43, 99, 0.8)), 
-                url('/love/heart.webp') no-repeat center center;
-    background-size: cover;
-}
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Roboto', sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(15, 12, 41, 0.8), rgba(48, 43, 99, 0.8)), 
+                        url('/love/heart.webp') no-repeat center center;
+            background-size: cover;
+        }
 
-h1, p {
-    margin: 0 15px; /* Add margin to avoid content touching the edges */
-}
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 24px;
+            color: #00ffff; /* Initial color */
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.7), 0 0 35px rgba(0, 255, 255, 0.5), 0 0 50px rgba(0, 255, 255, 0.3);
+            z-index: 2;
+            animation: neon-glow 3s ease-in-out infinite alternate, colorChange 10s ease-in-out infinite;
+            letter-spacing: 2.5px;
+            transition: all 0.3s ease-in-out;
+        }
 
-h1 {
-    font-size: 3.5rem;
-    margin-bottom: 24px;
-    color: #00ffff;
-    text-shadow: 0 0 15px rgba(0, 255, 255, 0.7), 0 0 35px rgba(0, 255, 255, 0.5), 0 0 50px rgba(0, 255, 255, 0.3);
-    z-index: 2;
-    animation: neon-glow 3s ease-in-out infinite alternate, colorChange 10s ease-in-out infinite;
-    letter-spacing: 2.5px;
-    transition: all 0.3s ease-in-out;
-}
+        p {
+            font-size: 1.75rem;
+            margin-top: 12px;
+            color: #ff00ff;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.8), 0 0 25px rgba(255, 0, 255, 0.6), 0 0 35px rgba(255, 0, 255, 0.4);
+            z-index: 2;
+            animation: fadeInUp 2.5s ease-in-out;
+            line-height: 1.75;
+            transition: all 0.3s ease-in-out;
+        }
 
-p {
-    font-size: 1.75rem;
-    margin-top: 12px;
-    max-width: 85%;
-    text-align: center;
-    color: #ff00ff;
-    text-shadow: 0 0 10px rgba(255, 0, 255, 0.8), 0 0 25px rgba(255, 0, 255, 0.6), 0 0 35px rgba(255, 0, 255, 0.4);
-    z-index: 2;
-    animation: fadeInUp 2.5s ease-in-out;
-    line-height: 1.75;
-    transition: all 0.3s ease-in-out;
-}
+        .scrollable-box {
+            max-width: 85%;
+            max-height: 200px; /* Set the height of the scrollable box */
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #ff00ff;
+            border-radius: 10px;
+            overflow-y: auto; /* Enable vertical scrolling */
+            background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent background */
+        }
 
-@keyframes neon-glow {
-    0%, 100% {
-        text-shadow: 0 0 20px rgba(0, 255, 255, 0.7), 0 0 35px rgba(0, 255, 255, 0.5), 0 0 50px rgba(0, 255, 255, 0.3);
-    }
-    50% {
-        text-shadow: 0 0 25px rgba(0, 255, 255, 1), 0 0 50px rgba(255, 0, 127, 1), 0 0 70px rgba(0, 255, 255, 1);
-    }
-}
+        @keyframes neon-glow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(0, 255, 255, 0.7), 0 0 35px rgba(0, 255, 255, 0.5), 0 0 50px rgba(0, 255, 255, 0.3);
+            }
+            50% {
+                text-shadow: 0 0 25px rgba(0, 255, 255, 1), 0 0 50px rgba(255, 0, 127, 1), 0 0 70px rgba(0, 255, 255, 1);
+            }
+        }
 
-@keyframes colorChange {
-    0% { color: #00ffff; }
-    25% { color: #ff00ff; }
-    50% { color: #00ff00; }
-    75% { color: #ff4500; }
-    100% { color: #00ffff; }
-}
+        @keyframes colorChange {
+            0% { color: #00ffff; }   /* Aqua */
+            25% { color: #ff00ff; }  /* Magenta */
+            50% { color: #00ff00; }  /* Lime Green */
+            75% { color: #ff4500; }  /* Orange Red */
+            100% { color: #00ffff; } /* Back to Aqua */
+        }
 
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
 
-#heartCanvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-    background: radial-gradient(circle at center, rgba(255, 0, 255, 0.1), transparent 70%);
-}
+        #heartCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            background: radial-gradient(circle at center, rgba(255, 0, 255, 0.1), transparent 70%);
+        }
 
-audio {
-    display: none;
-}
+        audio {
+            display: none;
+        }
 
-@media (max-width: 768px) {
-    h1 {
-        font-size: 3rem;
-    }
-    p {
-        font-size: 1.5rem;
-    }
-}
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
 
-@media (max-width: 480px) {
-    h1 {
-        font-size: 2.25rem;
-    }
-    p {
-        font-size: 1.25rem;
-    }
-}
+            p {
+                font-size: 1.5rem;
+            }
+        }
 
-h1:hover, p:hover {
-    color: #ff00ff;
-    text-shadow: 0 0 30px rgba(255, 0, 255, 0.8), 0 0 50px rgba(0, 255, 255, 0.6), 0 0 70px rgba(255, 0, 255, 0.4);
-}
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.25rem;
+            }
 
+            p {
+                font-size: 1.25rem;
+            }
+        }
+
+        h1:hover, p:hover {
+            color: #ff00ff;
+            text-shadow: 0 0 30px rgba(255, 0, 255, 0.8), 0 0 50px rgba(0, 255, 255, 0.6), 0 0 70px rgba(255, 0, 255, 0.4);
+        }
     </style>
 </head>
 <body>
     <h1 id="loveMessage">Proposal not found.</h1>
-    <p id="customMessageDisplay"></p>
+    <div class="scrollable-box">
+        <p id="customMessageDisplay"></p>
+    </div>
     <h1 id="proposeMessage"></h1>
 
-    <!-- Canvas for Heart Animation -->
     <canvas id="heartCanvas"></canvas>
 
-    <!-- Romantic Love Song -->
     <audio autoplay loop>
         <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
@@ -182,15 +188,15 @@ h1:hover, p:hover {
             if (this.y < -this.size) {
                 this.y = canvas.height + this.size;
                 this.x = Math.random() * canvas.width;
-                this.size = Math.random() * 50 + 30; // Increased size range
+                this.size = Math.random() * 50 + 30;
                 this.color = colors[Math.floor(Math.random() * colors.length)];
             }
         };
 
         function createHearts() {
-            for (let i = 0; i < 20; i++) { // Increased number of hearts
-                const size = Math.random() * 50 + 30; // Increased size range
-                const speed = Math.random() * 6 + 4; // Increased speed range
+            for (let i = 0; i < 20; i++) {
+                const size = Math.random() * 50 + 30;
+                const speed = Math.random() * 6 + 4;
                 const color = colors[Math.floor(Math.random() * colors.length)];
                 const x = Math.random() * canvas.width;
                 const y = Math.random() * canvas.height;
@@ -215,7 +221,6 @@ h1:hover, p:hover {
             canvas.height = window.innerHeight;
         });
 
-        // Initial sizing of the canvas
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
