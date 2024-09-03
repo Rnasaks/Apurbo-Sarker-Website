@@ -179,7 +179,7 @@
             if (lovedOneName && customMessage && yourName) {
                 const uniqueID = Date.now().toString(36);
                 localStorage.setItem(uniqueID, JSON.stringify({ lovedOneName, customMessage, yourName }));
-                const proposalUrl = `${window.location.origin}${window.location.pathname.replace('propose.html', '')}proposal.html?id=${uniqueID}`;
+                const proposalUrl = `${window.location.origin}/love/proposal.html?id=${uniqueID}`;
                 window.location.href = proposalUrl;
             } else {
                 alert('Please fill in all fields.');
