@@ -24,8 +24,8 @@
         }
 
         h1 {
-            font-size: 3.5rem;
-            margin-bottom: 25px;
+            font-size: 3rem;
+            margin-bottom: 20px;
             color: #00ffff;
             text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.4);
             z-index: 2;
@@ -34,9 +34,9 @@
         }
 
         p {
-            font-size: 1.75rem;
-            margin-top: 15px;
-            max-width: 650px;
+            font-size: 1.5rem;
+            margin-top: 10px;
+            max-width: 90%;
             color: #ff00ff;
             text-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 0 0 30px rgba(255, 0, 255, 0.6), 0 0 40px rgba(255, 0, 255, 0.4);
             z-index: 2;
@@ -77,6 +77,26 @@
         audio {
             display: none;
         }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            p {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -114,7 +134,7 @@
         const canvas = document.getElementById('heartCanvas');
         const ctx = canvas.getContext('2d');
         const hearts = [];
-        const colors = ['#FF0000', '#FF1493', '#FF69B4', '#FF00FF', '#8A2BE2']; // Red and Purple shades
+        const colors = ['#FF0000', '#FF1493', '#FF69B4', '#FF00FF', '#8A2BE2'];
 
         function Heart(x, y, size, speed, color) {
             this.x = x;
@@ -142,15 +162,15 @@
             if (this.y < -this.size) {
                 this.y = canvas.height + this.size;
                 this.x = Math.random() * canvas.width;
-                this.size = Math.random() * 30 + 20;
+                this.size = Math.random() * 20 + 15; // Adjusted size for better visibility
                 this.color = colors[Math.floor(Math.random() * colors.length)];
             }
         };
 
         function createHearts() {
-            for (let i = 0; i < 20; i++) {
-                const size = Math.random() * 30 + 20;
-                const speed = Math.random() * 4 + 3;
+            for (let i = 0; i < 30; i++) { // Increased number of hearts for better density on smaller screens
+                const size = Math.random() * 20 + 15;
+                const speed = Math.random() * 2 + 1;
                 const color = colors[Math.floor(Math.random() * colors.length)];
                 const x = Math.random() * canvas.width;
                 const y = Math.random() * canvas.height;
@@ -174,6 +194,10 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         });
+
+        // Initial sizing of the canvas
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
