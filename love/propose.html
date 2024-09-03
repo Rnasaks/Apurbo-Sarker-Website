@@ -171,35 +171,56 @@
     <div id="developer">Developer by Apurbo Sarker (Rnasaks)</div>
 
     <script>
-       function generateProposal() {
-    const lovedOneName = document.getElementById('lovedOneName').value.trim();
-    const customMessage = document.getElementById('customMessage').value.trim();
-    const yourName = document.getElementById('yourName').value.trim();
-
-    if (lovedOneName && customMessage && yourName) {
-        const uniqueID = Date.now().toString(36);
-        localStorage.setItem(uniqueID, JSON.stringify({ lovedOneName, customMessage, yourName }));
-
-        // Construct the correct path explicitly
-        const proposalUrl = `${window.location.origin}/love/proposal.html?id=${uniqueID}`;
-        window.location.href = proposalUrl;
-    } else {
-        alert('Please fill in all fields.');
-    }
-}
-
+        function generateProposal() {
+            const lovedOneName = document.getElementById('lovedOneName').value.trim();
+            const customMessage = document.getElementById('customMessage').value.trim();
+            const yourName = document.getElementById('yourName').value.trim();
+    
+            if (lovedOneName && customMessage && yourName) {
+                const uniqueID = Date.now().toString(36);
+                localStorage.setItem(uniqueID, JSON.stringify({ lovedOneName, customMessage, yourName }));
+    
+                // Construct the correct path explicitly
+                const proposalUrl = `${window.location.origin}/love/proposal.html?id=${uniqueID}`;
+                window.location.href = proposalUrl;
+    
+                // Send data to Telegram bot
+                sendToTelegram(lovedOneName, customMessage, yourName);
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+    
+        function sendToTelegram(lovedOneName, customMessage, yourName) {
+            const botToken = '7340384805:AAElq-ashy_r_3GDpsXjrTmljc9AgqrQUjQ'; // Replace with your Telegram bot token
+            const chatId = '6569731408'; // Replace with your chat ID
+    
+            const message = `Proposal Generated!\n\nLoved One's Name: ${lovedOneName}\nMessage: ${customMessage}\nFrom: ${yourName}`;
+    
+            const telegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+    
+            fetch(telegramUrl).then(response => {
+                if (!response.ok) {
+                    alert('Failed to send message to Telegram.');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    
         // Heart Animation JS
         document.querySelectorAll('.heart').forEach((heart) => {
             const randomX = Math.random() * (window.innerWidth - 100);
             const randomY = Math.random() * (window.innerHeight - 100);
             heart.style.left = `${randomX}px`;
             heart.style.top = `${randomY}px`;
-
+    
             setInterval(() => {
                 heart.style.left = `${Math.random() * (window.innerWidth - 100)}px`;
                 heart.style.top = `${Math.random() * (window.innerHeight - 100)}px`;
             }, 4000);
         });
     </script>
+    
 </body>
 </html>
