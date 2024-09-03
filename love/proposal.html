@@ -23,80 +23,109 @@
             background-size: cover;
         }
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #00ffff;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.4);
-            z-index: 2;
-            animation: glow 2.5s ease-in-out infinite alternate;
-            letter-spacing: 2px;
-        }
+        /* Modernized Headings with Color Change Animation */
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 24px;
+    color: #00ffff; /* Initial color */
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.7), 0 0 35px rgba(0, 255, 255, 0.5), 0 0 50px rgba(0, 255, 255, 0.3);
+    z-index: 2;
+    animation: neon-glow 3s ease-in-out infinite alternate, colorChange 10s ease-in-out infinite;
+    letter-spacing: 2.5px;
+    transition: all 0.3s ease-in-out;
+}
 
-        p {
-            font-size: 1.5rem;
-            margin-top: 10px;
-            max-width: 90%;
-            color: #ff00ff;
-            text-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 0 0 30px rgba(255, 0, 255, 0.6), 0 0 40px rgba(255, 0, 255, 0.4);
-            z-index: 2;
-            animation: fadeIn 2s ease-in-out;
-            line-height: 1.6;
-        }
 
-        @keyframes glow {
-            0%, 100% {
-                text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.4);
-            }
-            50% {
-                text-shadow: 0 0 30px rgba(0, 255, 255, 1), 0 0 50px rgba(255, 0, 127, 1), 0 0 60px rgba(0, 255, 255, 1);
-            }
-        }
+/* Modernized Paragraphs */
+p {
+    font-size: 1.75rem;
+    margin-top: 12px;
+    max-width: 85%;
+    color: #ff00ff;
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.8), 0 0 25px rgba(255, 0, 255, 0.6), 0 0 35px rgba(255, 0, 255, 0.4);
+    z-index: 2;
+    animation: fadeInUp 2.5s ease-in-out;
+    line-height: 1.75;
+    transition: all 0.3s ease-in-out;
+}
 
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px) scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
 
-        #heartCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
+/* Updated Glow Animation */
+@keyframes neon-glow {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(0, 255, 255, 0.7), 0 0 35px rgba(0, 255, 255, 0.5), 0 0 50px rgba(0, 255, 255, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 25px rgba(0, 255, 255, 1), 0 0 50px rgba(255, 0, 127, 1), 0 0 70px rgba(0, 255, 255, 1);
+    }
+}
 
-        audio {
-            display: none;
-        }
+/* Color Change Animation */
+@keyframes colorChange {
+    0% { color: #00ffff; }   /* Aqua */
+    25% { color: #ff00ff; }  /* Magenta */
+    50% { color: #00ff00; }  /* Lime Green */
+    75% { color: #ff4500; }  /* Orange Red */
+    100% { color: #00ffff; } /* Back to Aqua */
+}
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
+/* Updated Fade-in Animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
 
-            p {
-                font-size: 1.25rem;
-            }
-        }
+/* Modernized Canvas for Heart Animation */
+#heartCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(circle at center, rgba(255, 0, 255, 0.1), transparent 70%);
+}
 
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2rem;
-            }
+/* Hidden Audio */
+audio {
+    display: none;
+}
 
-            p {
-                font-size: 1rem;
-            }
-        }
+/* Responsive Design for Tablets */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    p {
+        font-size: 1.5rem;
+    }
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.25rem;
+    }
+
+    p {
+        font-size: 1.25rem;
+    }
+}
+
+/* Hover Effects for Interactivity */
+h1:hover, p:hover {
+    color: #ff00ff;
+    text-shadow: 0 0 30px rgba(255, 0, 255, 0.8), 0 0 50px rgba(0, 255, 255, 0.6), 0 0 70px rgba(255, 0, 255, 0.4);
+}
+
     </style>
 </head>
 <body>
