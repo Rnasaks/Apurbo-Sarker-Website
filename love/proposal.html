@@ -162,15 +162,15 @@
             if (this.y < -this.size) {
                 this.y = canvas.height + this.size;
                 this.x = Math.random() * canvas.width;
-                this.size = Math.random() * 20 + 15; // Adjusted size for better visibility
+                this.size = Math.random() * 50 + 30; // Increased size range
                 this.color = colors[Math.floor(Math.random() * colors.length)];
             }
         };
 
         function createHearts() {
-            for (let i = 0; i < 30; i++) { // Increased number of hearts for better density on smaller screens
-                const size = Math.random() * 20 + 15;
-                const speed = Math.random() * 2 + 1;
+            for (let i = 0; i < 30; i++) { // Increased number of hearts
+                const size = Math.random() * 50 + 30; // Increased size range
+                const speed = Math.random() * 5 + 3; // Increased speed range
                 const color = colors[Math.floor(Math.random() * colors.length)];
                 const x = Math.random() * canvas.width;
                 const y = Math.random() * canvas.height;
