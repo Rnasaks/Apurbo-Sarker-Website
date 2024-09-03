@@ -14,7 +14,7 @@
             background: radial-gradient(circle at center, #0f0c29, #24243e 50%, #000000 100%);
             font-family: 'Poppins', sans-serif;
             color: #e0e0e0;
-            display: none;
+            display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
@@ -24,7 +24,7 @@
 
         /* Headings */
         h1 {
-            font-size: 4rem;
+            font-size: 3rem;
             margin-bottom: 20px;
             color: #00eaff;
             text-shadow: 0 0 10px rgba(0, 234, 255, 0.8);
@@ -40,6 +40,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             margin-bottom: 30px;
+            height: 20px;
             width: 80%;
             max-width: 600px;
             background: rgba(50, 50, 50, 0.7);
@@ -51,7 +52,7 @@
 
         /* Textarea Specific Height */
         textarea {
-            height: 160px;
+            height: 400px; /* Increased height */
         }
 
         /* Input Focus Effects */
@@ -85,8 +86,8 @@
         /* Heart Animation */
         .heart {
             position: absolute;
-            width: 120px;
-            height: 108px;
+            width: 60px;
+            height: 54px;
             background-color: #ff3366;
             transform: rotate(-45deg);
             animation: float 5s ease-in-out infinite;
@@ -99,21 +100,46 @@
         .heart::after {
             content: "";
             position: absolute;
-            width: 120px;
-            height: 120px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             background-color: inherit;
         }
 
         /* Before and After positions for heart */
         .heart::before {
-            top: -60px;
+            top: -30px;
             left: 0;
         }
 
         .heart::after {
-            left: 60px;
+            left: 30px;
             top: 0;
+        }
+
+        /* Additional hearts with different sizes and colors */
+        .heart:nth-child(2) {
+            width: 45px;
+            height: 40.5px;
+            animation-duration: 4s;
+            animation-delay: 1s;
+            background-color: #ff66a3;
+        }
+
+        .heart:nth-child(3) {
+            width: 75px;
+            height: 67.5px;
+            animation-duration: 6s;
+            animation-delay: 2s;
+            background-color: #ff99cc;
+        }
+
+        .heart:nth-child(4) {
+            width: 35px;
+            height: 31.5px;
+            animation-duration: 3s;
+            animation-delay: 0.5s;
+            background-color: #ffcccc;
         }
 
         /* Float Animation */
@@ -128,31 +154,6 @@
             }
         }
 
-        /* Additional hearts with different sizes and colors */
-        .heart:nth-child(2) {
-            width: 90px;
-            height: 81px;
-            animation-duration: 4s;
-            animation-delay: 1s;
-            background-color: #ff66a3;
-        }
-
-        .heart:nth-child(3) {
-            width: 150px;
-            height: 135px;
-            animation-duration: 6s;
-            animation-delay: 2s;
-            background-color: #ff99cc;
-        }
-
-        .heart:nth-child(4) {
-            width: 70px;
-            height: 63px;
-            animation-duration: 3s;
-            animation-delay: 0.5s;
-            background-color: #ffcccc;
-        }
-
         /* Propose by text styling */
         #proposeBy {
             font-size: 1.4rem;
@@ -163,18 +164,37 @@
             letter-spacing: 1px;
         }
 
-        /* Developer text styling */
+        /* Developer by text styling */
         #developer {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            font-size: 1.2rem;
-            color: #ccc;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-            font-style: italic;
-            transform: rotateX(15deg);
-            transition: transform 0.3s ease;
-            z-index: 100; /* Ensure it appears above other content */
+            font-family: 'Arial', sans-serif;
+            font-size: 1.2rem; /* Smaller font size */
+            text-align: center;
+            padding: 10px; /* Reduced padding */
+            margin: 10px auto;
+            color: #fff;
+            background: linear-gradient(45deg, #ff6f61, #ff3e8c, #6a1b9a, #00bcd4);
+            background-size: 400% 400%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: gradientAnimation 10s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        #developer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
         }
 
         /* Text glow animation */
@@ -227,6 +247,7 @@
                 localStorage.setItem(uniqueID, JSON.stringify({ lovedOneName, customMessage, yourName }));
     
                 // Construct the correct path explicitly
+
                 const proposalUrl = `${window.location.origin}/love/proposal.html?id=${uniqueID}`;
                 window.location.href = proposalUrl;
     
@@ -256,14 +277,16 @@
     
         // Heart Animation JS
         document.querySelectorAll('.heart').forEach((heart) => {
-            const randomX = Math.random() * (window.innerWidth - 100);
-            const randomY = Math.random() * (window.innerHeight - 100);
+            const randomX = Math.random() * (window.innerWidth - heart.offsetWidth);
+            const randomY = Math.random() * (window.innerHeight - heart.offsetHeight);
             heart.style.left = `${randomX}px`;
             heart.style.top = `${randomY}px`;
     
             setInterval(() => {
-                heart.style.left = `${Math.random() * (window.innerWidth - 100)}px`;
-                heart.style.top = `${Math.random() * (window.innerHeight - 100)}px`;
+                const randomX = Math.random() * (window.innerWidth - heart.offsetWidth);
+                const randomY = Math.random() * (window.innerHeight - heart.offsetHeight);
+                heart.style.left = `${randomX}px`;
+                heart.style.top = `${randomY}px`;
             }, 4000);
         });
 
