@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Proposal</title>
+    <title>Modern Proposal</title>
     <style>
         body, html {
             margin: 0;
@@ -18,193 +18,74 @@
             flex-direction: column;
             text-align: center;
             overflow: hidden;
-            background: linear-gradient(135deg, rgba(15, 12, 41, 0.8), rgba(48, 43, 99, 0.8), rgba(36, 36, 62, 0.8)),
+            background: linear-gradient(135deg, rgba(15, 12, 41, 0.8), rgba(48, 43, 99, 0.8)), 
                         url('/love/heart.webp') no-repeat center center;
             background-size: cover;
         }
 
         h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            color: #00ffff;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.4);
             z-index: 2;
-            animation: glow 3s ease-in-out infinite, floatText 3s infinite ease-in-out;
+            animation: glow 2.5s ease-in-out infinite alternate;
+            letter-spacing: 2px;
         }
 
         p {
-            font-size: 1.5rem;
-            margin-top: 10px;
-            max-width: 600px;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+            font-size: 1.75rem;
+            margin-top: 15px;
+            max-width: 650px;
+            color: #ff00ff;
+            text-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 0 0 30px rgba(255, 0, 255, 0.6), 0 0 40px rgba(255, 0, 255, 0.4);
             z-index: 2;
-            animation: fadeIn 2s ease-in-out, floatText 3s infinite ease-in-out;
+            animation: fadeIn 2s ease-in-out;
+            line-height: 1.6;
         }
 
         @keyframes glow {
             0%, 100% {
-                text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+                text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.4);
             }
             50% {
-                text-shadow: 0 0 30px rgba(255, 0, 127, 1);
+                text-shadow: 0 0 30px rgba(0, 255, 255, 1), 0 0 50px rgba(255, 0, 127, 1), 0 0 60px rgba(0, 255, 255, 1);
             }
         }
 
         @keyframes fadeIn {
             0% {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(20px) scale(0.9);
             }
             100% {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
-        /* Advanced Heart Animation */
-        .heart {
-            position: absolute;
-            bottom: -100px;
-            width: 60px;
-            height: 54px;
-            background-color: #ff0055;
-            transform: rotate(-45deg);
-            animation: floatUp 6s ease-in-out infinite;
-            opacity: 0.8;
-            z-index: 1;
-        }
-
-        .heart::before,
-        .heart::after {
-            content: "";
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: #ff0055;
-        }
-
-        .heart::before {
-            top: -30px;
-            left: 0;
-        }
-
-        .heart::after {
-            left: 30px;
-            top: 0;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: rotate(-45deg) translateY(0) scale(1);
-                opacity: 0.8;
-            }
-            50% {
-                opacity: 1;
-                transform: rotate(-45deg) translateY(-50vh) scale(1.2);
-            }
-            100% {
-                transform: rotate(-45deg) translateY(-100vh) scale(1.5);
-                opacity: 0;
-            }
-        }
-
-        .heart:nth-child(2) {
-            animation-delay: 1s;
-            left: 20%;
-            animation-duration: 7s;
-        }
-
-        .heart:nth-child(3) {
-            animation-delay: 2s;
-            left: 40%;
-            animation-duration: 8s;
-        }
-
-        .heart:nth-child(4) {
-            animation-delay: 0.5s;
-            left: 60%;
-            animation-duration: 9s;
-        }
-
-        .heart:nth-child(5) {
-            animation-delay: 3s;
-            left: 80%;
-            animation-duration: 10s;
-        }
-
-        .heart:nth-child(6), .heart:nth-child(7), .heart:nth-child(8), .heart:nth-child(9) {
-            animation-delay: 1.5s;
-            left: calc(10% + 15vw);
-            animation-duration: 9s;
-        }
-
-        .heart:nth-child(10), .heart:nth-child(11), .heart:nth-child(12) {
-            animation-delay: 2.5s;
-            left: calc(60% + 15vw);
-            animation-duration: 10s;
-        }
-
-        /* Hide audio controls */
-        audio {
-            display: none;
-        }
-
-        /* Background Animation */
-        body::before {
-            content: '';
+        #heartCanvas {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: 0;
-            animation: backgroundPulse 6s infinite;
+            z-index: 1;
+            pointer-events: none;
         }
 
-        @keyframes backgroundPulse {
-            0%, 100% {
-                filter: blur(0px);
-            }
-            50% {
-                filter: blur(5px);
-            }
-        }
-
-        /* Futuristic Floating Effect */
-        h1, p {
-            animation: floatText 3s infinite ease-in-out;
-            z-index: 2;
-        }
-
-        @keyframes floatText {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
+        audio {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <h1 id="loveMessage"></h1>
+    <h1 id="loveMessage">Proposal not found.</h1>
     <p id="customMessageDisplay"></p>
     <h1 id="proposeMessage"></h1>
 
-    <!-- Floating Hearts -->
-    <div class="heart"></div>
-    <div class="heart"></div>
-    <div class="heart"></div>
-    <div class="heart"></div>
-    <div class="heart"></div>
-    <div class="heart"></div>
-    <div class="heart"></div>
-    <div class="heart"></div>
-    <div class="heart"></div>
-    <div class="heart"></div>
-    <div class="heart"></div>
-    <div class="heart"></div>
+    <!-- Canvas for Heart Animation -->
+    <canvas id="heartCanvas"></canvas>
 
     <!-- Romantic Love Song -->
     <audio autoplay loop>
@@ -230,25 +111,92 @@
 
         window.onload = showProposal;
 
+        const canvas = document.getElementById('heartCanvas');
+        const ctx = canvas.getContext('2d');
+        const hearts = [];
+        const colors = ['#FF0000', '#FF1493', '#FF69B4', '#FF00FF', '#8A2BE2']; // Red and Purple shades
+
+        function Heart(x, y, size, speed, color) {
+            this.x = x;
+            this.y = y;
+            this.size = size;
+            this.speed = speed;
+            this.color = color;
+        }
+
+        Heart.prototype.draw = function() {
+            ctx.beginPath();
+            ctx.moveTo(this.x, this.y);
+            ctx.bezierCurveTo(this.x - this.size / 2, this.y - this.size / 2, this.x - this.size, this.y + this.size / 3, this.x, this.y + this.size);
+            ctx.bezierCurveTo(this.x + this.size, this.y + this.size / 3, this.x + this.size / 2, this.y - this.size / 2, this.x, this.y);
+            ctx.closePath();
+
+            ctx.fillStyle = this.color;
+            ctx.shadowColor = this.color;
+            ctx.shadowBlur = 20;
+            ctx.fill();
+        };
+
+        Heart.prototype.update = function() {
+            this.y -= this.speed;
+            if (this.y < -this.size) {
+                this.y = canvas.height + this.size;
+                this.x = Math.random() * canvas.width;
+                this.size = Math.random() * 30 + 20;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+        };
+
+        function createHearts() {
+            for (let i = 0; i < 20; i++) {
+                const size = Math.random() * 30 + 20;
+                const speed = Math.random() * 2 + 1;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                hearts.push(new Heart(x, y, size, speed, color));
+            }
+        }
+
+        function animateHearts() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            hearts.forEach(heart => {
+                heart.update();
+                heart.draw();
+            });
+            requestAnimationFrame(animateHearts);
+        }
+
+        createHearts();
+        animateHearts();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Initialize canvas size based on initial screen size
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
         document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-});
+            e.preventDefault();
+        });
 
-document.onkeydown = function(e) {
-    if (e.keyCode == 123) { // F12 key
-        return false;
-    }
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-        return false;
-    }
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-        return false;
-    }
-    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-        return false;
-    }
-}
-
+        document.onkeydown = function(e) {
+            if (e.keyCode == 123) { // F12 key
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
+        };
     </script>
 </body>
 </html>

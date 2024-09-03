@@ -5,153 +5,186 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Your Proposal</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            font-family: 'Roboto', sans-serif;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
-            overflow: hidden;
-        }
+       body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #0f0c29, #24243e 50%, #000000 100%);
+    font-family: 'Poppins', sans-serif; /* Modern and sleek font */
+    color: #e0e0e0; /* Softer white for a more refined look */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    overflow: hidden;
+}
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 30px;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-        }
+h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: #00eaff; /* Vibrant cyan */
+    text-shadow: 0 0 10px rgba(0, 234, 255, 0.8);
+    animation: glowText 2.5s ease-in-out infinite alternate;
+    transform: translateZ(0); /* Subtle 3D effect */
+    transition: transform 0.3s ease;
+}
 
-        input[type="text"], textarea {
-            padding: 15px;
-            font-size: 1.5rem;
-            border: none;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            width: 80%;
-            max-width: 500px;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            backdrop-filter: blur(10px);
-        }
+input[type="text"], textarea {
+    padding: 20px;
+    font-size: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+    border-radius: 12px;
+    margin-bottom: 30px;
+    width: 80%;
+    max-width: 600px;
+    background: rgba(50, 50, 50, 0.7); /* Modern dark glass effect */
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
 
-        textarea {
-            height: 150px;
-        }
+textarea {
+    height: 160px;
+}
 
-        input[type="text"]:focus, textarea:focus {
-            outline: none;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 1);
-        }
+input[type="text"]:focus, textarea:focus {
+    outline: none;
+    border-color: #00eaff; /* Cyan glow on focus */
+    transform: scale(1.05); /* Slight zoom on focus */
+}
 
-        button {
-            padding: 15px 30px;
-            font-size: 1.5rem;
-            border: none;
-            border-radius: 8px;
-            background: #ff0055;
-            color: #fff;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 0 25px rgba(255, 0, 85, 0.7);
-        }
+button {
+    padding: 15px 40px;
+    font-size: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ff0055, #ff7eb3);
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transform: translateZ(0);
+}
 
-        button:hover {
-            background: #ff3366;
-            transform: translateY(-5px);
-        }
+button:hover {
+    background: linear-gradient(135deg, #ff66a3, #ff3366);
+    transform: translateY(-5px) scale(1.1); /* Lift and zoom effect on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+}
 
-        .heart {
-            position: absolute;
-            width: 100px;
-            height: 90px;
-            background-color: #ff0055;
-            transform: rotate(-45deg);
-            animation: float 6s ease-in-out infinite;
-        }
+.heart {
+    position: absolute;
+    width: 120px;
+    height: 108px;
+    background-color: #ff3366;
+    transform: rotate(-45deg);
+    animation: float 5s ease-in-out infinite;
+    filter: blur(1px);
+    opacity: 0.7;
+}
 
-        .heart::before,
-        .heart::after {
-            content: "";
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: #ff0055;
-        }
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: inherit;
+}
 
-        .heart::before {
-            top: -50px;
-            left: 0;
-        }
+.heart::before {
+    top: -60px;
+    left: 0;
+}
 
-        .heart::after {
-            left: 50px;
-            top: 0;
-        }
+.heart::after {
+    left: 60px;
+    top: 0;
+}
 
-        @keyframes float {
-            0% {
-                transform: rotate(-45deg) translateY(0) translateX(0);
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: rotate(-45deg) translateY(-200px) translateX(200px);
-                opacity: 0;
-            }
-        }
+@keyframes float {
+    0%, 100% {
+        transform: rotate(-45deg) translateY(0) translateX(0);
+        opacity: 0.7;
+    }
+    50% {
+        transform: rotate(-45deg) translateY(-150px) translateX(150px) scale(1.1);
+        opacity: 1;
+    }
+}
 
-        .heart:nth-child(2) {
-            width: 80px;
-            height: 72px;
-            animation-duration: 4s;
-            animation-delay: 2s;
-            background-color: #ff66a3;
-        }
+.heart:nth-child(2) {
+    width: 90px;
+    height: 81px;
+    animation-duration: 4s;
+    animation-delay: 1s;
+    background-color: #ff66a3;
+}
 
-        .heart:nth-child(3) {
-            width: 120px;
-            height: 108px;
-            animation-duration: 5s;
-            animation-delay: 3s;
-            background-color: #ff3366;
-        }
+.heart:nth-child(3) {
+    width: 150px;
+    height: 135px;
+    animation-duration: 6s;
+    animation-delay: 2s;
+    background-color: #ff99cc;
+}
 
-        .heart:nth-child(4) {
-            width: 60px;
-            height: 54px;
-            animation-duration: 3s;
-            animation-delay: 1s;
-            background-color: #ff99cc;
-        }
+.heart:nth-child(4) {
+    width: 70px;
+    height: 63px;
+    animation-duration: 3s;
+    animation-delay: 0.5s;
+    background-color: #ffcccc;
+}
 
-        /* Propose by text */
-        #proposeBy {
-            font-size: 1.2rem;
-            margin-top: 20px;
-            color: #ffcccc;
-        }
+/* Propose by text */
+#proposeBy {
+    font-size: 1.4rem;
+    margin-top: 30px;
+    color: #f5f5f5;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    animation: fadeInText 2s ease-in-out;
+    letter-spacing: 1px; /* More modern letter spacing */
+}
 
-        /* Developer text */
-        #developer {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            font-size: 1rem;
-            color: #999;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-            font-style: italic;
-            font-weight: bold;
-        }
+/* Developer text */
+#developer {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1.2rem;
+    color: #ccc;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    font-style: italic;
+    transform: rotateX(15deg); /* Subtle 3D effect */
+    transition: transform 0.3s ease;
+}
+
+/* Additional Animations */
+@keyframes glowText {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(0, 234, 255, 0.8), 0 0 40px rgba(0, 234, 255, 0.6);
+    }
+    50% {
+        text-shadow: 0 0 40px rgba(0, 234, 255, 1), 0 0 60px rgba(0, 234, 255, 0.8);
+    }
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
     </style>
 </head>
 <body>
