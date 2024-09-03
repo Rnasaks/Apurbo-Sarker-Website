@@ -5,29 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modern Proposal</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            font-family: 'Roboto', sans-serif;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
-            overflow: hidden;
-            background: linear-gradient(135deg, rgba(15, 12, 41, 0.8), rgba(48, 43, 99, 0.8)), 
-                        url('/love/heart.webp') no-repeat center center;
-            background-size: cover;
-        }
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    overflow-y: auto; /* Allow vertical scrolling */
+    background: linear-gradient(135deg, rgba(15, 12, 41, 0.8), rgba(48, 43, 99, 0.8)), 
+                url('/love/heart.webp') no-repeat center center;
+    background-size: cover;
+}
 
-        /* Modernized Headings with Color Change Animation */
+h1, p {
+    margin: 0 15px; /* Add margin to avoid content touching the edges */
+}
+
 h1 {
     font-size: 3.5rem;
     margin-bottom: 24px;
-    color: #00ffff; /* Initial color */
+    color: #00ffff;
     text-shadow: 0 0 15px rgba(0, 255, 255, 0.7), 0 0 35px rgba(0, 255, 255, 0.5), 0 0 50px rgba(0, 255, 255, 0.3);
     z-index: 2;
     animation: neon-glow 3s ease-in-out infinite alternate, colorChange 10s ease-in-out infinite;
@@ -35,8 +38,6 @@ h1 {
     transition: all 0.3s ease-in-out;
 }
 
-
-/* Modernized Paragraphs */
 p {
     font-size: 1.75rem;
     margin-top: 12px;
@@ -50,8 +51,6 @@ p {
     transition: all 0.3s ease-in-out;
 }
 
-
-/* Updated Glow Animation */
 @keyframes neon-glow {
     0%, 100% {
         text-shadow: 0 0 20px rgba(0, 255, 255, 0.7), 0 0 35px rgba(0, 255, 255, 0.5), 0 0 50px rgba(0, 255, 255, 0.3);
@@ -61,16 +60,14 @@ p {
     }
 }
 
-/* Color Change Animation */
 @keyframes colorChange {
-    0% { color: #00ffff; }   /* Aqua */
-    25% { color: #ff00ff; }  /* Magenta */
-    50% { color: #00ff00; }  /* Lime Green */
-    75% { color: #ff4500; }  /* Orange Red */
-    100% { color: #00ffff; } /* Back to Aqua */
+    0% { color: #00ffff; }
+    25% { color: #ff00ff; }
+    50% { color: #00ff00; }
+    75% { color: #ff4500; }
+    100% { color: #00ffff; }
 }
 
-/* Updated Fade-in Animation */
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -82,7 +79,6 @@ p {
     }
 }
 
-/* Modernized Canvas for Heart Animation */
 #heartCanvas {
     position: absolute;
     top: 0;
@@ -94,34 +90,28 @@ p {
     background: radial-gradient(circle at center, rgba(255, 0, 255, 0.1), transparent 70%);
 }
 
-/* Hidden Audio */
 audio {
     display: none;
 }
 
-/* Responsive Design for Tablets */
 @media (max-width: 768px) {
     h1 {
         font-size: 3rem;
     }
-
     p {
         font-size: 1.5rem;
     }
 }
 
-/* Responsive Design for Mobile Devices */
 @media (max-width: 480px) {
     h1 {
         font-size: 2.25rem;
     }
-
     p {
         font-size: 1.25rem;
     }
 }
 
-/* Hover Effects for Interactivity */
 h1:hover, p:hover {
     color: #ff00ff;
     text-shadow: 0 0 30px rgba(255, 0, 255, 0.8), 0 0 50px rgba(0, 255, 255, 0.6), 0 0 70px rgba(255, 0, 255, 0.4);
