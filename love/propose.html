@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Proposal</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            font-family: 'Roboto', sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+        }
+
+        input[type="text"], textarea {
+            padding: 15px;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            backdrop-filter: blur(10px);
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 1);
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 8px;
+            background: #ff0055;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 0 25px rgba(255, 0, 85, 0.7);
+        }
+
+        button:hover {
+            background: #ff3366;
+            transform: translateY(-5px);
+        }
+
+        .heart {
+            position: absolute;
+            width: 100px;
+            height: 90px;
+            background-color: #ff0055;
+            transform: rotate(-45deg);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ff0055;
+        }
+
+        .heart::before {
+            top: -50px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 50px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: rotate(-45deg) translateY(0) translateX(0);
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: rotate(-45deg) translateY(-200px) translateX(200px);
+                opacity: 0;
+            }
+        }
+
+        .heart:nth-child(2) {
+            width: 80px;
+            height: 72px;
+            animation-duration: 4s;
+            animation-delay: 2s;
+            background-color: #ff66a3;
+        }
+
+        .heart:nth-child(3) {
+            width: 120px;
+            height: 108px;
+            animation-duration: 5s;
+            animation-delay: 3s;
+            background-color: #ff3366;
+        }
+
+        .heart:nth-child(4) {
+            width: 60px;
+            height: 54px;
+            animation-duration: 3s;
+            animation-delay: 1s;
+            background-color: #ff99cc;
+        }
+
+        /* Propose by text */
+        #proposeBy {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            color: #ffcccc;
+        }
+
+        /* Developer text */
+        #developer {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 1rem;
+            color: #999;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            font-style: italic;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Create Your Proposal</h1>
+    <input type="text" id="lovedOneName" placeholder="Your Loved One's Name...">
+    <textarea id="customMessage" placeholder="Write your message..."></textarea>
+    <input type="text" id="yourName" placeholder="Your Name...">
+    <button onclick="generateProposal()">Generate Proposal</button>
+
+    <!-- Heart Animation -->
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+
+    <!-- Developer by text -->
+    <div id="developer">Developer by Apurbo Sarker (Rnasaks)</div>
+
+    <script>
+        function generateProposal() {
+            const lovedOneName = document.getElementById('lovedOneName').value.trim();
+            const customMessage = document.getElementById('customMessage').value.trim();
+            const yourName = document.getElementById('yourName').value.trim();
+
+            if (lovedOneName && customMessage && yourName) {
+                const uniqueID = Date.now().toString(36);
+                localStorage.setItem(uniqueID, JSON.stringify({ lovedOneName, customMessage, yourName }));
+                const proposalUrl = `${window.location.origin}${window.location.pathname.replace('propose.html', '')}proposal.html?id=${uniqueID}`;
+                window.location.href = proposalUrl;
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+
+        // Heart Animation JS
+        document.querySelectorAll('.heart').forEach((heart) => {
+            const randomX = Math.random() * (window.innerWidth - 100);
+            const randomY = Math.random() * (window.innerHeight - 100);
+            heart.style.left = `${randomX}px`;
+            heart.style.top = `${randomY}px`;
+
+            setInterval(() => {
+                heart.style.left = `${Math.random() * (window.innerWidth - 100)}px`;
+                heart.style.top = `${Math.random() * (window.innerHeight - 100)}px`;
+            }, 4000);
+        });
+    </script>
+</body>
+</html>
