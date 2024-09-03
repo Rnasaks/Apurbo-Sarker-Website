@@ -171,20 +171,22 @@
     <div id="developer">Developer by Apurbo Sarker (Rnasaks)</div>
 
     <script>
-        function generateProposal() {
-            const lovedOneName = document.getElementById('lovedOneName').value.trim();
-            const customMessage = document.getElementById('customMessage').value.trim();
-            const yourName = document.getElementById('yourName').value.trim();
+       function generateProposal() {
+    const lovedOneName = document.getElementById('lovedOneName').value.trim();
+    const customMessage = document.getElementById('customMessage').value.trim();
+    const yourName = document.getElementById('yourName').value.trim();
 
-            if (lovedOneName && customMessage && yourName) {
-                const uniqueID = Date.now().toString(36);
-                localStorage.setItem(uniqueID, JSON.stringify({ lovedOneName, customMessage, yourName }));
-                const proposalUrl = `${window.location.origin}${window.location.pathname.replace('propose.html', 'proposeproposal.html')}?id=${uniqueID}`;
-                window.location.href = proposalUrl;
-            } else {
-                alert('Please fill in all fields.');
-            }
-        }
+    if (lovedOneName && customMessage && yourName) {
+        const uniqueID = Date.now().toString(36);
+        localStorage.setItem(uniqueID, JSON.stringify({ lovedOneName, customMessage, yourName }));
+
+        // Construct the correct path explicitly
+        const proposalUrl = `${window.location.origin}/love/proposal.html?id=${uniqueID}`;
+        window.location.href = proposalUrl;
+    } else {
+        alert('Please fill in all fields.');
+    }
+}
 
         // Heart Animation JS
         document.querySelectorAll('.heart').forEach((heart) => {
