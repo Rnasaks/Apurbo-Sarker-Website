@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Anannya</title>
+  
+  <!-- Description for SEO and social previews -->
+  <meta name="description" content="A heartfelt celebration page created just for Anannya on this special day. Filled with joy, memories, and best wishes for a wonderful year ahead!">
+  
+  <!-- Open Graph data for social media sharing -->
+  <meta property="og:title" content="Happy Birthday Anannya">
+  <meta property="og:description" content="A heartfelt celebration page created just for Anannya on this special day, with joy, memories, and warm wishes for an amazing year ahead!">
+  <meta property="og:image" content="path/to/your/birthday-image.jpg"> <!-- Update with actual image path -->
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Card data for Twitter sharing -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Happy Birthday Anannya">
+  <meta name="twitter:description" content="A heartfelt celebration page created just for Anannya, filled with memories and best wishes!">
+  <meta name="twitter:image" content="path/to/your/birthday-image.jpg"> <!-- Update with actual image path -->
+
+  <!-- Link to external CSS file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <div class="star-bg"></div>
+  <!-- Auto-playing Background Music -->
+  <audio id="backgroundMusic" autoplay loop>
+    <source src="https://cdn.glitch.global/25e9b6ae-298f-4810-ae95-679830315a31/hbd.mp3?v=1730232252057" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+  <!-- Fallback Music Button -->
+  <button id="musicPlayButton" onclick="playMusic()" style="display:none; position: absolute; top: 20px; right: 20px; padding: 10px 20px; font-size: 1rem;">
+    Play Music 🎶
+</button>
+<div class="container">
+    <h1 class="birthday-greeting">Happy Birthday Anannya Sarker!</h1>
+    <!-- Full image popup -->
+    <div id="fullImgPopup" onclick="hideFullImage()">
+        <img id="fullImg" src="https://cdn.glitch.global/25e9b6ae-298f-4810-ae95-679830315a31/4.jpg?v=1730232300838" alt="Anannya's Full Image">
+    </div>       
+    <img src="https://cdn.glitch.global/25e9b6ae-298f-4810-ae95-679830315a31/4.jpg?v=1730232300838" alt="Anannya" class="profile-img" id="profileImg" onclick="showFullImage()">
+    <p class="deface">You have been cyber-defaced with love and happiness!</p>
+
+    <div class="cake-gif-container">
+        <img src="https://cdn.glitch.global/25e9b6ae-298f-4810-ae95-679830315a31/5.gif?v=1730232321032" alt="Birthday Cake" class="cake-gif">
+    </div>
+    <div class="wrap">
+        <div id="typed-strings">
+            <p>Today is...</p>
+                          <p>beautiful as other days</p>
+                          <p>but you realize</p>
+                          <p>another year has gone</p>
+                          <p>in a blink of the eyes</p>
+                          <p><strong>however</strong></p>
+                          <p>Do you know..?</p>
+                          <p>today is just special</p>
+                          <p>so special to you</p>
+                          <p>that's why</p>
+                          <p>Let's make it...</p>
+                          <p>the best celebration ever</p>
+                          <p>and let me share...</p>
+                          <p>a piece of happiness to you</p>
+                          <p>I made all this...</p>
+                          <p>as a birthday present to you</p>
+                          <p>thanks for being there</p>
+                          <p>thanks for the friendship</p>
+                          <p>we made</p>
+                          <p>thanks for everything</p>
+                          <p>I wish you all the best</p>
+                          <p>May your life be at ease</p>
+                          <p>May all your wishes come true</p>
+                          <p>Remember</p>
+                          <p>your ambitions</p>
+                          <p>you live as a free bird...</p>
+                          <p>flying in the blue sky</p>
+                          <p>Now things are different...</p>
+                          <p>real story of your life</p>
+                          <p>is just about to begin</p>
+                          <p>indeed..</p>
+                          <p>but...</p>
+                          <p>don't worry</p>
+                          <p>because...</p>
+                          <p>this year will be better</p>
+                          <p>and I hope</p>
+                          <p>you'll find...</p>
+                          <p>happiness along the way</p>
+                          <p>keep your spirit up</p>
+                          <p>enjoy every single moment...</p>
+                          <p>that you experience today</p>
+                          <p>fill it with your most</p>
+                          <p>beautiful smile</p>
+                          <p>and make it the best memory..</p>
+                          <p>lastly...</p>
+                          <p>I'd like to wish you</p>
+                          <p>one more time</p>
+                          <p>a very happy birthday </p>
+        </div>
+        <span id="typed" style="white-space:pre;"></span>
+    </div>
+<div>
+    <button class="surprise-btn" onclick="showImageAndFireworks()">Click for a Surprise! 🎇</button>
+    <p class="wish">Wishing you a fantastic year ahead!</p>
+    <div class="creator-info">
+    <p><span class="made-by">Made By</span> <a href="https://rnasaks.netlify.app/" target="_blank">Apurbo Sarker (Rnasaks)</a></p>
+   </div>
+</div>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="script.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.1.2/dist/confetti.browser.min.js"></script>
+
+<script>
+	var end = Date.now() + (5 * 1000);
+	// go Buckeyes!
+	var colors = ['#000', '#ff0000', '#f3f3f3'];
+	(function frame() {
+		confetti({
+			particleCount: 2,
+			angle: 60,
+			spread: 55,
+			origin: {
+				x: 0
+			},
+			colors: colors
+		});
+		confetti({
+			particleCount: 3,
+			angle: 120,
+			spread: 55,
+			origin: {
+				x: 1
+			},
+			colors: colors
+		});
+		if (Date.now() < end) {
+			requestAnimationFrame(frame);
+		}
+	}());
+</script>
+</body>
+</html>
