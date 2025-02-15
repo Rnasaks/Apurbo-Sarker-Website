@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Home Banner Section
     $(document).ready(function () {
-        var wordsLine3 = ['Digital Marketer', 'Web Developer', 'Freelancer', 'SEO Expert'];
+        var wordsLine3 = ['Digital Marketer', 'Web Developer', 'Hacker', 'Cyber Ghost'];
         var part3;
         var k = 0;
         var offset3 = 0;
